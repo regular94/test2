@@ -1,844 +1,251 @@
----
-version: alpha
-name: Inocras-design-analysis
-description: Inocras Cancer Genome Nexus — a clinical genomics SaaS platform design language that balances scientific authority with human readability. The system is built on three distinct typefaces (DM Sans for headings/actions, Atkinson Hyperlegible for body, JetBrains Mono for data/code), a warm near-black ink (#1a1a19) on white canvas, a single brand-defining dark forest green (#1a6b52), and a burnt orange accent (#b44d1a). Surfaces use a deliberate temperature system: warm off-white for navigation panels, cool off-white for analysis/chat panes, neutral off-white for data portals, and pure white for primary content. Tables are the primary data component. Status signals are colored text only — never badges with background fills. Coverage spans the homepage, genome data portal, agent scientist interface (3-pane chat + file system), data visualization outputs, and clinical metadata surfaces.
-
-colors:
-  # ── Core text
-  ink: "#1a1a19"
-  ink-secondary: "#52524e"
-  ink-tertiary: "#8b8b86"
-  on-dark: "#ffffff"
-  on-dark-muted: "rgba(255,255,255,0.45)"
-
-  # ── Canvas & surfaces
-  canvas: "#ffffff"
-  surface-warm: "#faf8f5"
-  surface-neutral: "#f4f3f0"
-  surface-cool: "#f7f8fa"
-
-  # ── Borders
-  line: "#dddbd5"
-  line-light: "#eceae5"
-
-  # ── Brand
-  brand: "#1a6b52"
-  brand-light: "#e8f1ed"
-  brand-deep: "#145440"
-
-  # ── Accent
-  accent: "#b44d1a"
-  accent-soft: "#f5e4d9"
-
-  # ── Semantic / data roles
-  blue: "#1a5fb4"
-  blue-soft: "#dce9f9"
-  purple: "#6c3fa0"
-  purple-soft: "#ece3f5"
-  red: "#c4271a"
-  red-soft: "#fde8e7"
-  green: "#1a7f37"
-  green-soft: "#d9f0e0"
-  gold: "#96690d"
-  gold-soft: "#f5eccf"
-
-  # ── Navigation (dark shell)
-  nav-bg: "#1a1a19"
-  nav-text: "#ffffff"
-  nav-text-inactive: "rgba(255,255,255,0.45)"
-
-  # ── Genomic variant roles
-  snv-oncogene: "#1a5fb4"
-  snv-tsg: "#6c3fa0"
-  snv-pathogenic: "#c4271a"
-  cnv-gain: "#b44d1a"
-  cnv-loss: "#6c3fa0"
-  cnv-neutral: "#dddbd5"
-  sv-fusion: "#1a5fb4"
-  sv-deletion: "#c4271a"
-  sv-inversion: "#96690d"
-  sv-duplication: "#1a7f37"
-  indel-frameshift: "#c4271a"
-  indel-inframe: "#96690d"
-  msi-high: "#b44d1a"
-  msi-stable: "#8b8b86"
-  tmb-high: "#c4271a"
-  tmb-low: "#1a5fb4"
-  hrd-positive: "#6c3fa0"
-  hrd-negative: "#8b8b86"
-  signature-sbs: "#1a5fb4"
-  signature-dbs: "#6c3fa0"
-  signature-id: "#96690d"
-
-  # ── PAM50 subtypes
-  subtype-lumA: "#1a7f37"
-  subtype-lumB: "#1a5fb4"
-  subtype-basal: "#c4271a"
-  subtype-her2: "#b44d1a"
-  subtype-normal: "#8b8b86"
-
-  # ── Dataset type labels (text-only, no chips)
-  type-reference: "#1a7f37"
-  type-mine: "#1a5fb4"
-  type-shared: "#b44d1a"
-
-  # ── Semantic
-  semantic-success: "#1a7f37"
-  semantic-error: "#c4271a"
-  semantic-warning: "#96690d"
-  semantic-info: "#1a5fb4"
-  semantic-active: "#b44d1a"
-
-  # ── Code syntax (in script viewer)
-  syntax-keyword: "#6c3fa0"
-  syntax-function: "#1a5fb4"
-  syntax-string: "#1a6b52"
-  syntax-comment: "#8b8b86"
-  syntax-number: "#b44d1a"
-
-typography:
-  # ── DM Sans: headings, UI actions, stat numbers
-  hero-number:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 48px
-    fontWeight: 700
-    lineHeight: 1.05
-    letterSpacing: -0.03em
-  display-lg:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 28px
-    fontWeight: 700
-    lineHeight: 1.15
-    letterSpacing: -0.03em
-  display-md:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 22px
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: -0.03em
-  heading-1:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 18px
-    fontWeight: 700
-    lineHeight: 1.25
-    letterSpacing: -0.02em
-  heading-2:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 16px
-    fontWeight: 700
-    lineHeight: 1.3
-    letterSpacing: -0.01em
-  heading-3:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 15px
-    fontWeight: 700
-    lineHeight: 1.3
-    letterSpacing: -0.01em
-  heading-4:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 13px
-    fontWeight: 700
-    lineHeight: 1.3
-    letterSpacing: 0
-  section-title:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 12px
-    fontWeight: 700
-    lineHeight: 1.3
-    letterSpacing: 0
-  button:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 13px
-    fontWeight: 700
-    lineHeight: 1.0
-    letterSpacing: 0
-  button-sm:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 12px
-    fontWeight: 700
-    lineHeight: 1.0
-    letterSpacing: 0
-  nav-brand:
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 15px
-    fontWeight: 700
-    lineHeight: 1.0
-    letterSpacing: 0
-
-  # ── Atkinson Hyperlegible: body, descriptions
-  body-lead:
-    fontFamily: "'Atkinson Hyperlegible', sans-serif"
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.6
-    letterSpacing: 0
-  body-md:
-    fontFamily: "'Atkinson Hyperlegible', sans-serif"
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.6
-    letterSpacing: 0
-  body-sm:
-    fontFamily: "'Atkinson Hyperlegible', sans-serif"
-    fontSize: 13px
-    fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: 0
-  body-xs:
-    fontFamily: "'Atkinson Hyperlegible', sans-serif"
-    fontSize: 12px
-    fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: 0
-  chat-message:
-    fontFamily: "'Atkinson Hyperlegible', sans-serif"
-    fontSize: 13px
-    fontWeight: 400
-    lineHeight: 1.65
-    letterSpacing: 0
-
-  # ── JetBrains Mono: data, labels, code
-  data-value:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 12px
-    fontWeight: 500
-    lineHeight: 1.4
-    letterSpacing: 0
-  data-value-sm:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 11px
-    fontWeight: 400
-    lineHeight: 1.4
-    letterSpacing: 0
-  domain-label:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 9px
-    fontWeight: 600
-    lineHeight: 1.0
-    letterSpacing: 0.06em
-    textTransform: uppercase
-  domain-label-sm:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 8px
-    fontWeight: 400
-    lineHeight: 1.0
-    letterSpacing: 0.04em
-    textTransform: uppercase
-  status-text:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 10px
-    fontWeight: 400
-    lineHeight: 1.3
-    letterSpacing: 0
-  code-block:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 10.5px
-    fontWeight: 400
-    lineHeight: 1.7
-    letterSpacing: 0
-
-rounded:
-  none: 0
-  xs: 1px
-  sm: 2px
-  md: 3px
-  lg: 6px
-  xl: 8px
-  full: 9999px
-
-spacing:
-  xxs: 2px
-  xs: 4px
-  sm: 8px
-  md: 12px
-  lg: 16px
-  xl: 20px
-  xxl: 24px
-  xxxl: 32px
-  section-sm: 40px
-  section: 56px
-  section-lg: 80px
-
-components:
-  # ── Buttons
-  button-primary:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.on-dark}"
-    typography: "{typography.button}"
-    rounded: "{rounded.md}"
-    padding: "8px 18px"
-    border: "none"
-  button-primary-hover:
-    backgroundColor: "{colors.ink-secondary}"
-  button-secondary:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.ink}"
-    typography: "{typography.button}"
-    rounded: "{rounded.md}"
-    padding: "8px 18px"
-    border: "1px solid {colors.line}"
-  button-secondary-hover:
-    backgroundColor: "{colors.surface-warm}"
-  button-sm:
-    typography: "{typography.button-sm}"
-    rounded: "{rounded.md}"
-    padding: "7px 16px"
-  button-ghost:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink-secondary}"
-    typography: "{typography.button-sm}"
-    rounded: "{rounded.md}"
-    padding: "4px 8px"
-    border: "none"
-
-  # ── Links
-  link:
-    textColor: "{colors.brand}"
-    fontWeight: 700
-    textDecoration: underline
-    textUnderlineOffset: 3px
-  link-table:
-    textColor: "{colors.blue}"
-    fontWeight: 700
-    textDecoration: underline
-    textUnderlineOffset: 3px
-
-  # ── Navigation
-  nav-bar:
-    backgroundColor: "{colors.nav-bg}"
-    textColor: "{colors.nav-text}"
-    height: 46px
-    padding: "0 20px"
-    typography: "{typography.nav-brand}"
-  nav-item-active:
-    textColor: "{colors.on-dark}"
-    fontWeight: 700
-  nav-item-inactive:
-    textColor: "{colors.nav-text-inactive}"
-
-  # ── Tables (primary data component)
-  table-header-cell:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 10px
-    fontWeight: 400
-    textTransform: uppercase
-    letterSpacing: 0.06em
-    color: "{colors.ink-tertiary}"
-    borderBottom: "2px solid {colors.ink}"
-    padding: "6px 10px 5px"
-  table-row:
-    borderBottom: "1px solid {colors.line-light}"
-    padding: "7px 10px"
-  table-row-hover:
-    backgroundColor: "{colors.surface-warm}"
-  table-cell-data:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 12px
-    color: "{colors.ink}"
-  table-cell-body:
-    fontFamily: "'Atkinson Hyperlegible', sans-serif"
-    fontSize: 13px
-    color: "{colors.ink}"
-  table-note: "No alternating row fills. Borders separate rows only."
-
-  # ── Cards
-  card-base:
-    backgroundColor: "{colors.canvas}"
-    border: "1px solid {colors.line-light}"
-    rounded: "{rounded.none}"
-    padding: "20px 22px"
-  card-hover:
-    border: "1px solid {colors.line}"
-    shadow: "0 2px 12px rgba(0,0,0,0.06)"
-  card-active:
-    backgroundColor: "{colors.brand-light}"
-    border: "1px solid {colors.brand}"
-  card-empty:
-    backgroundColor: "{colors.canvas}"
-    border: "1px solid {colors.line-light}"
-    rounded: "{rounded.none}"
-    padding: "20px 22px"
-    minHeight: 220px
-
-  # ── Callouts & annotations (left-border only, no bg fill)
-  callout-clinical:
-    borderLeft: "4px solid {colors.blue}"
-    backgroundColor: "transparent"
-    padding: "8px 12px"
-    typography: "{typography.body-sm}"
-  callout-warning:
-    borderLeft: "4px solid {colors.gold}"
-    backgroundColor: "transparent"
-    padding: "8px 12px"
-  callout-brand:
-    borderLeft: "3px solid {colors.brand}"
-    backgroundColor: "transparent"
-    padding: "9px 11px"
-  callout-error:
-    borderLeft: "4px solid {colors.red}"
-    backgroundColor: "transparent"
-    padding: "8px 12px"
-
-  # ── Status indicators (colored text only)
-  status-active:
-    color: "{colors.accent}"
-    dot: "8px circle with pulse animation"
-  status-verified:
-    color: "{colors.green}"
-    noBackground: true
-  status-unverified:
-    color: "{colors.gold}"
-    noBackground: true
-  status-note: "No pills, no badge backgrounds. Status is always plain colored text."
-
-  # ── Dataset type labels
-  type-label-ref:
-    color: "{colors.type-reference}"
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 9px
-    letterSpacing: 0.04em
-    textTransform: uppercase
-  type-label-mine:
-    color: "{colors.type-mine}"
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 9px
-    letterSpacing: 0.04em
-    textTransform: uppercase
-  type-label-shared:
-    color: "{colors.type-shared}"
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 9px
-    letterSpacing: 0.04em
-    textTransform: uppercase
-
-  # ── Agent Scientist 3-pane layout
-  as-left-pane:
-    backgroundColor: "{colors.surface-warm}"
-    borderRight: "1px solid {colors.line}"
-    width: 256px
-  as-center-pane:
-    backgroundColor: "{colors.surface-cool}"
-  as-right-pane:
-    backgroundColor: "{colors.canvas}"
-    borderLeft: "1px solid {colors.line}"
-    width: 340px
-  as-pane-header:
-    padding: "14px 16px 10px"
-    borderBottom: "1px solid {colors.line-light}"
-
-  # ── Chat messages
-  chat-user-bubble:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.on-dark}"
-    rounded: "12px 12px 2px 12px"
-    padding: "9px 13px"
-    maxWidth: "78%"
-    typography: "{typography.chat-message}"
-  chat-ai-bubble:
-    backgroundColor: "{colors.canvas}"
-    border: "1px solid {colors.line-light}"
-    padding: "11px 13px"
-    typography: "{typography.chat-message}"
-    textColor: "{colors.ink}"
-  chat-input:
-    border: "1px solid {colors.line}"
-    focusBorder: "1px solid {colors.ink}"
-    padding: "7px 9px 7px 13px"
-    typography: "{typography.chat-message}"
-  agent-steps:
-    backgroundColor: "{colors.canvas}"
-    border: "1px solid {colors.line-light}"
-    borderLeft: "3px solid {colors.brand}"
-    padding: "9px 11px"
-  step-done-color: "{colors.ink-secondary}"
-  step-active-color: "{colors.brand}"
-
-  # ── Inline data table (inside chat)
-  inline-table-header:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 9px
-    textTransform: uppercase
-    letterSpacing: 0.06em
-    color: "{colors.ink-tertiary}"
-    borderBottom: "2px solid {colors.ink}"
-    padding: "3px 8px 5px 0"
-  inline-table-cell:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 11px
-    color: "{colors.ink-secondary}"
-    borderBottom: "1px solid {colors.line-light}"
-    padding: "4px 8px 4px 0"
-  inline-table-cell-gene:
-    color: "{colors.ink}"
-    fontWeight: 600
-  inline-table-cell-high:
-    color: "{colors.accent}"
-    fontWeight: 600
-  inline-table-cell-mod:
-    color: "{colors.gold}"
-  inline-table-cell-low:
-    color: "{colors.ink-tertiary}"
-
-  # ── File tree (in right pane)
-  tree-folder-name:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 11px
-    fontWeight: 600
-    color: "{colors.ink}"
-  tree-file-name:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 10px
-    color: "{colors.ink-secondary}"
-  tree-file-active:
-    backgroundColor: "{colors.brand-light}"
-    color: "{colors.brand}"
-    fontWeight: 700
-
-  # ── Section label (horizontal rule style)
-  section-label:
-    fontFamily: "'JetBrains Mono', monospace"
-    fontSize: 9px
-    fontWeight: 600
-    letterSpacing: 0.07em
-    textTransform: uppercase
-    color: "{colors.ink-tertiary}"
-    afterContent: "1px solid {colors.line}"
-
-  # ── Portal page panels
-  panel-base:
-    backgroundColor: "{colors.canvas}"
-    border: "1px solid {colors.line-light}"
-    rounded: "{rounded.none}"
-  panel-header:
-    padding: "10px 14px 8px"
-    borderBottom: "1px solid {colors.line-light}"
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 12px
-    fontWeight: 700
-    color: "{colors.ink}"
-
-  # ── Tabs (underline style)
-  tab-inactive:
-    color: "{colors.ink-tertiary}"
-    fontWeight: 500
-    borderBottom: "2px solid transparent"
-    padding: "11px 16px"
-  tab-active:
-    color: "{colors.ink}"
-    fontWeight: 700
-    borderBottom: "2px solid {colors.ink}"
-
-  # ── Dividers
-  section-divider-brand:
-    borderTop: "3px solid {colors.brand}"
-    note: "Used for Explore further sections"
-
-  # ── Homepage hero (marketing surface)
-  hero-band:
-    backgroundColor: "#1B2B6B"
-    textColor: "{colors.on-dark}"
-    padding: "80px 5vw 72px"
-  hero-eyebrow:
-    backgroundColor: "rgba(255,255,255,0.12)"
-    border: "1px solid rgba(255,255,255,0.25)"
-    textColor: "rgba(255,255,255,0.9)"
-    fontFamily: "'DM Sans', sans-serif"
-    fontSize: 10px
-    fontWeight: 600
-    letterSpacing: 0.1em
-    textTransform: uppercase
-
-  # ── Footer
-  footer-region:
-    backgroundColor: "{colors.canvas}"
-    borderTop: "1px solid {colors.line-light}"
-    padding: "40px 5vw"
-    textColor: "{colors.ink-tertiary}"
-    typography: "{typography.body-xs}"
----
-
 ## Overview
 
-Inocras Cancer Genome Nexus is a clinical genomics SaaS platform that enables researchers and clinicians to analyze somatic variant data — SNVs, INDELs, SVs, CNVs, MSI, TMB, HRD, and mutational signatures — at both cohort and sample level. The design language communicates scientific authority through restraint: warm near-black ink on white, a single forest-green brand accent, and JetBrains Mono as the universal data voice.
+Shopifi runs two parallel design tracks that share typographic DNA and a single button vocabulary, but diverge in canvas polarity. The marketing track lives on `{colors.canvas-night}` (`#000000`) — full-bleed cinematic photography of merchants, giant `{typography.display-xxl}` headlines in Neue Haas Grotesk Display set at weight 330 (a thin, almost editorial cut), and a single CTA: a white-stroked black pill with the form `button-outline-on-dark`. The pages read like the spread of a high-end print magazine: lots of black, lots of negative space, photography that doesn't compete with text, and one and only one action per band.
 
-The platform comprises four surfaces: a **marketing homepage** (dark navy hero), a **genome data portal** (neutral off-white grid of datasets), an **agent scientist** (3-pane chat + file system), and **data visualization outputs** (genomic plots generated to disk). Each surface uses a different background temperature — warm, neutral, cool, or pure white — as the primary context signal without heavy visual chrome.
+The transactional track flips to `{colors.canvas-light}` and `{colors.canvas-cream}` (an off-white that's barely warmer than pure white). Pricing tiers, comparison tables, and signup flows sit on this lighter canvas, with the same pill button system but in inverse polarity (a solid black pill with white text, or a `{colors.aloe-10}` mint pill for the featured / "Start free trial" tier). The accents — `{colors.aloe-10}` mint and `{colors.pistachio-10}` pistachio — show up only on the light track, never on the cinematic dark hero pages.
+
+Typography is split across three families. **Neue Haas Grotesk Display** at thin weights (330–500) handles every display, headline, and editorial moment — the brand's identity is that thin display cut. **Inter Variable** at 420–550 weights handles every UI body, button label, caption, and form field — utility text that doesn't fight the display. **ui-monospace** appears only in code blocks and rare technical eyebrows. Across all three families, the OpenType `ss03` stylistic set is enabled — it's the brand's character-level signature, applied universally.
 
 **Key Characteristics:**
-- Three-font system with strict role separation: DM Sans for headings/actions, Atkinson Hyperlegible for body text, JetBrains Mono for all data/labels/code
-- Brand green (#1a6b52) as the single accent — appears on active states, links, agent step indicators, and section dividers
-- Burnt orange (#b44d1a) for accent/active pipeline — pulsing 8px dot for live status, never used as a generic highlight
-- Tables are the primary data component — not card grids
-- Status signals are colored text only — never badges with background fills
-- Zero border-radius on cards (rounded.none); 3px on buttons only
-- All domain category labels (GENOMIC, CLINICAL, METADATA) in JetBrains Mono uppercase at 9-10px with 0.06em tracking
-- Page temperature: warm left panel, cool center analysis, neutral data portal, white primary content
+- Two-canvas system: `{colors.canvas-night}` for cinematic marketing, `{colors.canvas-light}` / `{colors.canvas-cream}` for transactional surfaces — never blended.
+- Pill-shape (`{rounded.pill}`) is the only button shape across both tracks; rounded rectangles do not exist for buttons.
+- Thin-weight (330) display typography is the signature; `{typography.display-xxl}` at 96px / weight 330 is the brand's loudest visual.
+- Aloe and pistachio greens (`{colors.aloe-10}`, `{colors.pistachio-10}`) are reserved for the light track — they signal commerce, growth, transactional success.
+- Photography is full-bleed, edge-to-edge, never inset in cards on the cinematic track; merchants and storefront imagery do the heavy visual lifting that gradients and illustrations would do elsewhere.
+- The OpenType `ss03` stylistic set is enabled across every text role — a character-level unifier that tracks across both tracks.
+- Tight letter-spacing on display sizes (2.4px positive tracking on 96px display) gives the thin weight extra optical air.
 
 ## Colors
 
+> **Source pages:** home (`/`), `/start`, `/website/builder`, `/pricing`.
+
 ### Brand & Accent
-- **Brand Green** ({colors.brand}): The single brand signal. Forest green — active states, text links, agent step indicators, section dividers ("Explore further"), dataset item active border.
-- **Brand Light** ({colors.brand-light}): Active item background tint — appears behind active dataset items and file tree selections.
-- **Brand Deep** ({colors.brand-deep}): Pressed/hover state for brand elements.
-- **Accent Burnt Orange** ({colors.accent}): Active pipeline dot (with pulse animation), publication labels (AACR), shared dataset type label. Never used decoratively.
+- **Aloe** (`{colors.aloe-10}` — `#c1fbd4`): The featured-tier and "growth" accent. Used as a pill button background on light surfaces and as a feature-card fill in the pricing comparison band.
+- **Pistachio** (`{colors.pistachio-10}` — `#d4f9e0`): Softer than aloe; used as a wide section band fill on the light track to signal a different category of feature without leaving the green family.
+- **Cool Link Tones** (`{colors.link-cool-1}` `#9dabad`, `{colors.link-cool-2}` `#9797a2`, `{colors.link-cool-3}` `#bdbdca`, `{colors.link-mint}` `#99b3ad`): Muted footer / tertiary link colors used on dark surfaces to create a quiet hierarchy below the primary white type.
 
-### Text Stack
-- **Ink** ({colors.ink}): Near-black warm tone — primary headlines, table cell data, nav background.
-- **Ink Secondary** ({colors.ink-secondary}): Secondary text — descriptions, table body.
-- **Ink Tertiary** ({colors.ink-tertiary}): Muted — mono domain labels, placeholder, metadata.
+### Surface
+- **Canvas Night** (`{colors.canvas-night}` — `#000000`): Pure black hero, cinematic feature pages, footer.
+- **Canvas Night Elevated** (`{colors.canvas-night-elevated}` — `#0a0a0a`): Cards on cinematic surfaces, video frames.
+- **Surface Elevated Dark** (`{colors.surface-elevated-dark}` — `#1e2c31`): Dark teal-shifted surface used on a small subset of dark cards to introduce subtle depth without breaking the black.
+- **Canvas Light** (`{colors.canvas-light}` — `#ffffff`): Pricing, signup, comparison tables.
+- **Canvas Cream** (`{colors.canvas-cream}` — `#fbfbf5`): Slightly warm off-white used on the pricing-page background canvas — invisibly different from `#ffffff` but adds editorial warmth.
+- **Hairline Light** (`{colors.hairline-light}` — `#e4e4e7`): 1px borders on light cards, table dividers.
+- **Hairline Dark** (`{colors.hairline-dark}` — `#1e2c31`): 1px borders on the rare dark cards that have visible chrome.
 
-### Surface Temperature System
-- **Canvas** ({colors.canvas}): Primary content surfaces — AI message bubbles, panels, table rows.
-- **Surface Warm** ({colors.surface-warm}): Left navigation panes, Explorer context — #faf8f5, warm off-white.
-- **Surface Neutral** ({colors.surface-neutral}): Data portal backgrounds — #f4f3f0.
-- **Surface Cool** ({colors.surface-cool}): Analysis and agent chat center panes — #f7f8fa, cool off-white.
+### Shade Ladder
+- **Shade-30** (`{colors.shade-30}` — `#d4d4d8`): Tag / chip background on light, footer hairline on dark.
+- **Shade-40** (`{colors.shade-40}` — `#a1a1aa`): Tertiary text on light, secondary text on dark.
+- **Shade-50** (`{colors.shade-50}` — `#71717a`): Secondary text on light.
+- **Shade-60** (`{colors.shade-60}` — `#52525b`): Tertiary text on light, deep on dark.
+- **Shade-70** (`{colors.shade-70}` — `#3f3f46`): Pressed-state of the primary pill button; deep dark surface accent.
 
-### Borders
-- **Line** ({colors.line}): Primary border — card outlines, input borders, structural dividers.
-- **Line Light** ({colors.line-light}): Table row separators, panel internal dividers — #eceae5.
-
-### Genomic Data Roles
-- **Oncogene / SNV blue** ({colors.snv-oncogene}): Gain-of-function mutations, oncogene annotations — #1a5fb4.
-- **TSG / Loss purple** ({colors.snv-tsg}): Tumor suppressor genes, loss of function — #6c3fa0.
-- **Pathogenic red** ({colors.snv-pathogenic}): Pathogenic variants, danger states — #c4271a.
-- **Verified green** ({colors.green}): Verified/confirmed results, LuminalA subtype — #1a7f37.
-- **Warning gold** ({colors.gold}): Unverified/uncertain findings, GOLD warnings — #96690d.
-
-### PAM50 Breast Cancer Subtypes
-- **LuminalA** ({colors.subtype-lumA}): Green #1a7f37 — favorable prognosis signal.
-- **LuminalB** ({colors.subtype-lumB}): Blue #1a5fb4.
-- **Basal-like** ({colors.subtype-basal}): Red #c4271a — aggressive subtype signal.
-- **HER2-enriched** ({colors.subtype-her2}): Accent #b44d1a.
-- **Normal-like** ({colors.subtype-normal}): Gray #8b8b86.
+### Text
+- **Ink** (`{colors.ink}` — `#000000`): All text on light canvas.
+- **On Primary** (`{colors.on-primary}` — `#ffffff`): All text on dark canvas + filled-pill labels.
 
 ## Typography
 
-### Font System (Three Fonts, Three Roles)
-All three fonts are available on Google Fonts:
-- **DM Sans**: `DM+Sans:wght@400;500;600;700` — humanist geometric sans for headings, numbers, CTAs
-- **Atkinson Hyperlegible**: `Atkinson+Hyperlegible:wght@400;700` — high legibility body text; designed to distinguish Il1 and 0O without feeling clinical
-- **JetBrains Mono**: `JetBrains+Mono:wght@400;500;600;700` — all data values, domain labels, and code surfaces
+### Font Family
 
-**Critical rule**: Never use system font stacks (-apple-system, Inter, Roboto, Segoe UI). The three-font stack is the brand identity.
+The display tier is **Neue Haas Grotesk Display** at thin weights (330–500). When unavailable, fall back to **Helvetica** at light weight, then Arial. The thin-weight cut is the brand — no substitution should default to weight 400+.
 
-### Role Assignments
+The UI tier is **Inter Variable** at 420–550 — a variable font with sub-weight precision that lets the system span body (420), strong (550), and caption (500) without jumping to heavier tiers. Inter is open-source via Google Fonts.
 
-| Token | Font | Size | Weight | Use |
-|---|---|---|---|---|
-| `{typography.hero-number}` | DM Sans | 28–48px | 700 | Cohort N, TMB values, hero stats |
-| `{typography.display-lg}` | DM Sans | 28px | 700 | Page-level headlines |
-| `{typography.heading-1}` | DM Sans | 18px | 700 | Panel/section titles in spec view |
-| `{typography.heading-2}` | DM Sans | 16px | 700 | Study titles in data portal |
-| `{typography.section-title}` | DM Sans | 12px | 700 | Panel headers, pane titles |
-| `{typography.button}` | DM Sans | 13px | 700 | All button labels |
-| `{typography.body-lead}` | Atkinson | 16px | 400 | Hero subtitle, description lede |
-| `{typography.body-sm}` | Atkinson | 13px | 400 | Primary body, chat messages |
-| `{typography.body-xs}` | Atkinson | 12px | 400 | Descriptions, captions, citations |
-| `{typography.data-value}` | JetBrains Mono | 12px | 500 | Table cells with numeric/ID data |
-| `{typography.domain-label}` | JetBrains Mono | 9–10px | 600 | GENOMIC / CLINICAL / METADATA labels |
-| `{typography.code-block}` | JetBrains Mono | 10.5px | 400 | Script viewer, inline code |
+The code tier is **ui-monospace**, the system mono — preferred over a webfont mono to avoid unnecessary downloads.
+
+The OpenType `ss03` stylistic set is enabled across every role. It alters specific glyph forms (lowercase `a`, `g`, single-story numerals) for a slightly more geometric character. Apply via `font-feature-settings: "ss03"` on the body element or root.
+
+### Hierarchy
+
+| Token | Size | Weight | Line Height | Letter Spacing | Use |
+|---|---|---|---|---|---|
+| `{typography.display-xxl}` | 96px | 330 | 1.0 | 2.4px | Cinematic hero headline |
+| `{typography.display-xl}` | 70px | 330 | 1.0 | 0 | Section opener on cinematic pages |
+| `{typography.display-lg}` | 55px | 330 | 1.16 | 0 | Pricing-page page title |
+| `{typography.display-md}` | 48px | 330 | 1.14 | 0 | Sub-section headline on light track |
+| `{typography.heading-xl}` | 28px | 500 | 1.28 | 0.42px | Card title / pricing tier name |
+| `{typography.heading-lg}` | 24px | 400 | 1.14 | 0.36px | Compact card title |
+| `{typography.heading-md}` | 20px | 500 | 1.4 | 0.3px | Section sub-heading |
+| `{typography.heading-sm}` | 18px | 500 | 1.25 | 0.72px | Eyebrow / mini-section label |
+| `{typography.body-lg}` | 18px | 550 | 1.56 | 0 | Marketing body lead, large body |
+| `{typography.body-md}` | 16px | 420 | 1.5 | 0 | Default UI body, pill-button labels |
+| `{typography.body-strong}` | 16px | 550 | 1.5 | 0 | Emphasized body run |
+| `{typography.caption}` | 14px | 500 | 1.49 | 0.28px | Helper copy, footnotes |
+| `{typography.micro}` | 13px | 500 | 1.5 | -0.13px | Pricing fine print |
+| `{typography.eyebrow-cap}` | 12px | 400 | 1.2 | 0.72px | All-caps eyebrow above large headlines |
+| `{typography.code}` | 16px | 400 | 1.5 | 0 | Code blocks |
 
 ### Principles
-- Negative letter-spacing on DM Sans display sizes: -0.03em at 22px+, -0.02em at 18px, -0.01em at 15-16px
-- JetBrains Mono domain labels: always uppercase, always 0.06em letter-spacing, always 9-10px
-- Body text (Atkinson): generous leading 1.6 for readability in clinical/scientific contexts
-- Data values: JetBrains Mono 12px/500 in tables — never Atkinson in data cells
-- Chat messages: Atkinson 13px / 1.65 line-height
+- **Display thinness is the brand.** Always render display sizes at weight 330 — never 400+. The thinness is a deliberate editorial choice that makes the giant size feel quiet.
+- **Display in NHGD, body in Inter.** Don't push body roles up to NHGD; don't push display roles down to Inter.
+- **Tracking lifts on display.** The 96px hero gets +2.4px positive tracking — the thin glyphs need air. At 70px and below, tracking returns to 0.
+
+### Note on Font Substitutes
+Open substitutes for Neue Haas Grotesk Display: **Helvetica Now Display** (proprietary) or **Inter Display** at light weights (open-source) are the closest matches. Avoid Helvetica Neue at default weight — it's too heavy for the brand's thin tier. **Inter Variable** is open-source via Google Fonts and is the canonical body face — no substitute needed.
 
 ## Layout
 
 ### Spacing System
-- Base unit: 4px
-- Standard content padding: 16–24px
-- Portal page padding: 32px 36px
-- Agent pane padding: 14px 16px (headers), 18px (chat messages)
-- Table cell padding: 7px 10px (rows), 6px 10px (headers)
+- **Base unit**: 8px (with denser sub-units 1, 2, 3, 4 for fine work).
+- **Tokens**: `{spacing.xxs}` 2px · `{spacing.xs}` 4px · `{spacing.sm}` 8px · `{spacing.md}` 12px · `{spacing.lg}` 16px · `{spacing.xl}` 24px · `{spacing.xxl}` 32px · `{spacing.huge}` 64px.
+- **Section padding**: `{spacing.huge}` 64–128px on cinematic marketing pages (extreme negative space is the point); collapses to ~48px on transactional pages where density takes priority.
+- **Card internal padding**: `{spacing.xxl}` 32px on pricing cards; `{spacing.xl}` 24px on compact tag rows.
 
-### Grid Patterns
-- **Data portal**: 2-column dataset card grid (1fr 1fr), 16px gap
-- **Summary panels**: 4-column grid (repeat(4, 1fr)), 14px gap
-- **Agent scientist**: 3-pane flex layout — left 256px fixed | center flex-1 | right 340px slide-in
-- **Homepage**: 2-column hero (1fr 340px), max-width 1200px
+### Grid & Container
+- Cinematic hero pages use a wide max-width container (~1440–1600px) with edge-bleeding photography that escapes the container.
+- Pricing collapses through 4-up → 2-up → 1-up tiers based on viewport.
+- Body content centers in a ~720–840px reading column on long-form pages.
 
-### Container
-- Max-width: 1200px, centered
-- Horizontal gutter: 5vw (marketing), 32–36px (app surfaces)
+### Whitespace Philosophy
+The cinematic track treats whitespace as the brand's most valuable asset — sections often have 128–192px of vertical air between content blocks, with photography filling the rest. The transactional track tightens to ~48–64px between bands because users are scanning, comparing, and acting. The contrast between the two whitespace philosophies is part of the brand voice.
 
 ## Elevation & Depth
 
 | Level | Treatment | Use |
 |---|---|---|
-| 0 (flat) | No shadow; `{colors.line-light}` border | Default cards, panels |
-| 1 (hover) | `0 2px 12px rgba(0,0,0,0.06)` + `{colors.line}` border | Hovered dataset cards |
-| 2 (lightbox scrim) | `rgba(0,0,0,0.92)` full overlay | Image lightbox background |
-| 3 (dropdown) | `0 4px 16px rgba(0,0,0,0.12)` | Context menus |
+| 0 | Flat, no shadow | Default surface |
+| 1 | `0 1px 2px rgba(255,255,255,0.05), inset 0 1px 0 rgba(255,255,255,0.04)` | Subtle inset highlight on dark cards (a top-edge sheen) |
+| 2 | `0 0 0 1px rgba(255,255,255,0.08), 0 1px 3px rgba(0,0,0,0.3), 0 5px 10px rgba(0,0,0,0.2)` | Dark elevated cards with hairline + drop shadow stack |
+| 3 | `0 8px 8px rgba(0,0,0,0.1), 0 4px 4px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.1)` | Stacked-shadow card on light surfaces; layered tiny shadows produce a soft halo |
+| 4 | `0 25px 50px -12px rgba(0,0,0,0.25)` | Modal / floating panel on light |
 
-Inocras uses almost no elevation. Depth is created through surface temperature (warm/cool/neutral) and border weight (1px vs 2px), not shadows.
+### Decorative Depth
+On the cinematic track, depth comes from photography — full-bleed merchant imagery layered behind cards, with subtle inset top-edge highlights creating the illusion of light hitting a glass surface. On the light track, the layered tiny-shadow stack (Level 3) produces a soft, paper-like halo around pricing cards — depth without harshness.
 
 ## Shapes
 
 ### Border Radius Scale
+
 | Token | Value | Use |
 |---|---|---|
-| `{rounded.none}` | 0 | All cards, panels, tables — zero radius is the brand signal |
-| `{rounded.xs}` | 1px | Data tags in agent pane |
-| `{rounded.sm}` | 2px | File tree items |
-| `{rounded.md}` | 3px | Buttons (the only rounded element in the core UI) |
-| `{rounded.lg}` | 6px | Search inputs in some contexts |
+| `{rounded.xs}` | 4px | Inputs, hairline tags |
+| `{rounded.sm}` | 5px | Image containers (small) |
+| `{rounded.md}` | 8px | Form inputs, video frames, smaller cards |
+| `{rounded.lg}` | 12px | Pricing cards, feature cards |
+| `{rounded.xl}` | 20px (top-only on some asymmetric cards) | Hero photo frames, cinematic card chrome |
+| `{rounded.pill}` | 9999px | All buttons, pill tags, mint chips |
 
-**Critical rule**: Cards and panels use `border-radius: 0`. Inocras is deliberately rectilinear — the angular geometry signals scientific precision. The only rounded elements are buttons (3px) and circular status dots.
+### Photography Geometry
+Photography is full-bleed with no border. On cinematic pages it escapes the container entirely; on transactional pages it sits inside `{rounded.lg}` containers with no shadow. Avatar treatments in customer-logo strips are simple greyscale wordmarks at uniform height (~24–32px), aligned in a single horizontal strip.
 
 ## Components
 
 ### Buttons
-**`button-primary`** — Near-black (#1a1a19) fill, white text, DM Sans 13px 700, 3px border-radius. The dominant action CTA.
 
-**`button-secondary`** — White fill, #1a1a19 text, 1px line border. Secondary/cancel actions.
+**`button-primary-pill`** — the dominant CTA across the system.
+- Background `{colors.primary}` (black), text `{colors.on-primary}`, type `{typography.body-md}`, padding `{spacing.md} {spacing.xl}` (12px 24px), rounded `{rounded.pill}` 9999px.
+- Pressed state `button-primary-pill-pressed`: background lifts to `{colors.shade-70}`.
 
-**`button-ghost`** — Transparent, no border. Used for icon actions in pane headers.
+**`button-outline-on-dark`** — the cinematic hero CTA.
+- Background `{colors.canvas-night}` (transparent on the canvas), 2px solid `{colors.on-primary}` border, text `{colors.on-primary}`, same pill geometry.
 
-**`link`** — Brand green, bold, underline with 3px offset. Used for all text-link navigations (not buttons).
+**`button-outline-on-light`** — the light-track equivalent.
+- Background `{colors.canvas-light}`, 1px solid `{colors.ink}` border, text `{colors.ink}`, same pill geometry.
 
-**`link-table`** — Blue (#1a5fb4), bold, underline. Used inside tables for sample ID links.
+**`button-aloe-pill`** — the featured CTA on pricing pages.
+- Background `{colors.aloe-10}`, text `{colors.ink}`, same pill geometry. Used for the "Start free trial" tier.
+
+### Cards & Containers
+
+**`card-pricing`** — the standard tier card on the pricing page.
+- Background `{colors.canvas-light}`, padding `{spacing.xxl}`, rounded `{rounded.lg}` 12px, 1px `{colors.hairline-light}` border. Title in `{typography.heading-xl}`, price in `{typography.display-md}`, body in `{typography.body-md}`, CTA pinned to the bottom as `button-primary-pill`.
+
+**`card-pricing-featured`** — the highlighted pricing tier.
+- Background `{colors.aloe-10}`, otherwise identical to `card-pricing`. The mint fill (rather than a brand-color border) is the brand's distinctive featured-tier choice.
+
+**`card-feature-cinematic`** — feature card on the cinematic track.
+- Background `{colors.canvas-night-elevated}`, text `{colors.on-primary}`, rounded `{rounded.lg}`, often with a top-edge inset highlight (Level 1 elevation). Holds full-bleed photography or a single large statement.
+
+**`card-pistachio-band`** — wide horizontal band card used to highlight a category of features on the light track.
+- Background `{colors.pistachio-10}`, text `{colors.ink}`, rounded `{rounded.lg}` 12px, padding `{spacing.xxl}`.
+
+**`card-photo-frame`** — full-bleed photography container on cinematic pages.
+- Background `{colors.canvas-night}`, padding 0, rounded `{rounded.xl}` 20px (often top-only). The photo IS the content; no inner padding, no overlay text inside the card.
+
+### Inputs & Forms
+
+**`text-input`** — standard text input on light surfaces.
+- Background `{colors.canvas-light}`, text `{colors.ink}`, type `{typography.body-md}`, padding `{spacing.sm}+ {spacing.md}` (10px 12px), rounded `{rounded.md}` 8px, 1px `{colors.hairline-light}` border.
 
 ### Navigation
-**`nav-bar`** — #1a1a19 background, 46px height. DM Sans 15px 700 white brand text left. Inactive items at rgba(255,255,255,0.45). No border-bottom.
 
-### Tables (Primary Data Component)
-Tables are the central UI component for all genomic data. Rules:
-- Header: JetBrains Mono 10px uppercase, 0.06em tracking, 2px solid #1a1a19 bottom border
-- Rows: 1px solid #eceae5 bottom separator, no alternating fills
-- Data cells: JetBrains Mono 12px
-- Text cells: Atkinson Hyperlegible 13px
-- Hover: surface-warm (#faf8f5) background
+**`nav-bar-light`** — top nav on light pages.
+- Background `{colors.canvas-light}`, text `{colors.ink}`, padding `{spacing.lg} {spacing.xl}`. Logo wordmark on the left, nav items center, two pill buttons on the right (`button-outline-on-light` for "Log in", `button-primary-pill` for "Start free trial").
 
-### Cards
-**`card-base`** — Zero border-radius, 1px line-light border. Dataset cards, portal items.
+**`nav-bar-dark`** — top nav on cinematic pages.
+- Background `{colors.canvas-night}`, text `{colors.on-primary}`, otherwise identical structure. Two pill buttons on the right (`button-outline-on-dark` for both, with the rightmost subtly more prominent via type weight).
 
-**`card-active`** — Brand-light background, brand-color border. Selected state for dataset items.
+### Pills, Tags, and Chips
 
-### Callouts (Left-Border Pattern)
-All callouts use a left border only — no background fill, no rounded corners.
-- **`callout-clinical`** — 4px blue left border. Clinical context notes.
-- **`callout-warning`** — 4px gold left border. Quality/confidence warnings.
-- **`callout-brand`** — 3px brand-green left border. Agent step panels, explore sections.
-- **`callout-error`** — 4px red left border. Error states, failed pipeline steps.
+**`pill-tag-mint`** — small tag on light surfaces, signaling a feature category.
+- Background `{colors.aloe-10}`, text `{colors.ink}`, type `{typography.eyebrow-cap}`, padding `{spacing.xs} {spacing.md}`, rounded `{rounded.pill}`.
 
-### Status Indicators
-All status signals are colored text only. No pill backgrounds, no chip containers.
-- Active pipeline: 8px circle in accent orange with `pulse` CSS animation
-- Dataset type: GENOMIC, CLINICAL, METADATA in JetBrains Mono uppercase colored text
-- Confidence: green = verified, gold = unverified — text only
+**`pill-tag-shade`** — neutral tag on light surfaces.
+- Background `{colors.shade-30}`, text `{colors.ink}`, otherwise same shape as `pill-tag-mint`.
 
-### Agent Scientist Interface
-3-pane layout:
-- **Left pane** (256px, surface-warm): Dataset selector, query history, dataset detail strip (brand left-border callout)
-- **Center pane** (flex, surface-cool): Chat messages, input bar at bottom
-- **Right pane** (340px, canvas, slide-in): File tree tabs + preview panel
+### Signature Components
 
-**`chat-user-bubble`** — Ink fill, white text, asymmetric border-radius (12/12/2/12).
+**Cinematic Photography Layer** — full-bleed merchant photos on the hero. No overlay scrim, no text-on-image; instead, the type sits in clean negative space above or below the photo. The brand treats photography as an editorial spread, not as decoration.
 
-**`chat-ai-bubble`** — White bg, line-light border, rectangular (no radius).
+**Stacked Tiny Shadows (Level 3 Elevation)** — pricing cards on the light track use 4 stacked tiny drop shadows (each 1–8px Y offset, 10% black) to produce a soft, layered paper halo. This is the brand's distinctive depth on light.
 
-**`agent-steps`** — White bg, brand left-border callout, mono text. Done steps = fg2, Active step = brand green.
+**`link-on-dark`** — inline link on cinematic pages.
+- Color `{colors.on-primary}`, no underline by default (links rely on context); for tertiary footer links, color shifts to one of the cool muted tones (`{colors.link-cool-1}` etc.) with a persistent underline.
 
-**`inline-table`** — Inside AI messages: mono 9px header with 2px ink bottom, mono 11px data cells with line-light separator.
+**`footer-dark`** — full-page-width footer on the cinematic track.
+- Background `{colors.canvas-night}`, text `{colors.on-primary}`, type `{typography.caption}`, padding `{spacing.huge} {spacing.xl}`. Contains 4–5 columns of muted-tone link groups, social icons, and a small legal row.
 
-### Section Labels
-JetBrains Mono 9px uppercase, 0.07em tracking, ink-tertiary color. Followed by a 1px line hairline extending to the right edge. Used to segment portal pages and portal panels.
+**`footer-light`** — equivalent on the transactional track.
+- Background `{colors.canvas-light}`, text `{colors.ink}`, otherwise same structure.
 
 ## Do's and Don'ts
 
 ### Do
-- Use DM Sans for ALL headings, stat numbers, and buttons — it's the heading voice
-- Use Atkinson Hyperlegible for ALL body text and descriptions
-- Use JetBrains Mono for ALL data values, domain labels, and code — including in chat
-- Apply 0px border-radius to cards and panels — rectilinear geometry is a key brand signal
-- Use left-border callouts (no background fill) for all annotations and agent steps
-- Keep status signals as colored text only — never add a background chip or pill
-- Apply the page temperature system: warm left panel, cool center, neutral portal, white primary
-- Use brand green (#1a6b52) sparingly — only for active/selected states, text links, agent indicators
-- Separate table rows with 1px line-light borders, not alternating fill colors
+- Reserve `{colors.aloe-10}` and `{colors.pistachio-10}` for the light track only — they don't appear on cinematic black pages.
+- Always use `{rounded.pill}` for buttons; never `{rounded.md}` or `{rounded.lg}`.
+- Render display tiers at weight 330; bumping to 400 or 500 breaks the brand's thin-display signature.
+- Use full-bleed photography on cinematic pages — let it escape the container.
+- Apply `font-feature-settings: "ss03"` globally; the stylistic set is the brand's typographic signature.
+- Pair black canvas with white type and white-stroked outline pills; pair light canvas with black type and filled-black pills.
 
 ### Don't
-- Don't use system fonts (Inter, Roboto, -apple-system, Segoe UI) — they destroy the brand identity
-- Don't use pill-shaped badges or chips with background fills for status
-- Don't apply border-radius to cards, panels, or tables
-- Don't use pastel background fills for callout blocks — left border only
-- Don't use progress bar widgets — represent pipeline status with sentence text + pulse dot
-- Don't use icon-in-circle patterns
-- Don't apply uniform spacing across all sections — vary to create rhythm
-- Don't use Tailwind default color tokens (slate, teal, emerald, etc.)
-- Don't use blue (#1a5fb4) as a generic link color for non-table contexts — brand green is the link color
-
-## Visualization Output Palette
-
-For matplotlib/seaborn/circos PNG generation, use these role assignments:
-
-### Mutation Type Palette
-| Role | Hex | Usage |
-|---|---|---|
-| SNV — missense | `{colors.snv-oncogene}` (#1a5fb4) | Missense substitutions |
-| SNV — nonsense/frameshift | `{colors.snv-pathogenic}` (#c4271a) | Truncating mutations |
-| SNV — TSG | `{colors.snv-tsg}` (#6c3fa0) | Tumor suppressor loss |
-| INDEL — frameshift | `{colors.indel-frameshift}` (#c4271a) | Frameshift indels |
-| INDEL — inframe | `{colors.indel-inframe}` (#96690d) | In-frame indels |
-| SV — fusion | `{colors.sv-fusion}` (#1a5fb4) | Gene fusions |
-| SV — deletion | `{colors.sv-deletion}` (#c4271a) | Structural deletions |
-| SV — duplication | `{colors.sv-duplication}` (#1a7f37) | Tandem duplications |
-| SV — inversion | `{colors.sv-inversion}` (#96690d) | Inversions |
-| CNV — gain | `{colors.cnv-gain}` (#b44d1a) | Copy number gain |
-| CNV — loss | `{colors.cnv-loss}` (#6c3fa0) | Copy number loss |
-| CNV — neutral | `{colors.cnv-neutral}` (#dddbd5) | Copy number neutral |
-
-### Cohort / Clinical Palette
-| Role | Hex | Usage |
-|---|---|---|
-| MSI-H | `{colors.msi-high}` (#b44d1a) | MSI-high samples |
-| MSI-S/L | `{colors.msi-stable}` (#8b8b86) | MSI-stable/low |
-| TMB-high | `{colors.tmb-high}` (#c4271a) | High tumor mutation burden |
-| TMB-low | `{colors.tmb-low}` (#1a5fb4) | Low TMB |
-| HRD-positive | `{colors.hrd-positive}` (#6c3fa0) | HRD-positive |
-| LuminalA | `{colors.subtype-lumA}` (#1a7f37) | PAM50 LumA |
-| LuminalB | `{colors.subtype-lumB}` (#1a5fb4) | PAM50 LumB |
-| Basal | `{colors.subtype-basal}` (#c4271a) | PAM50 Basal |
-| HER2-enriched | `{colors.subtype-her2}` (#b44d1a) | PAM50 HER2 |
-
-### Plot Background
-- Figure background: `{colors.canvas}` (#ffffff) or `{colors.surface-warm}` (#faf8f5) for warm context
-- Axes background: `{colors.canvas}` (#ffffff)
-- Grid lines: `{colors.line-light}` (#eceae5), alpha 0.5
-- Axis labels / tick text: `{colors.ink}` (#1a1a19) in JetBrains Mono
-- Axis titles: `{colors.ink}` (#1a1a19) in DM Sans 700
-
-## Page Temperature Reference
-
-| Surface | Background | Context |
-|---|---|---|
-| Dashboard | `{colors.canvas}` #ffffff | Neutral white — primary decisions |
-| Explorer / left pane | `{colors.surface-warm}` #faf8f5 | Browsing, navigation |
-| Analysis / chat center | `{colors.surface-cool}` #f7f8fa | Active inquiry |
-| Data portal | `{colors.surface-neutral}` #f4f3f0 | Dataset grid |
-| Sample detail | `{colors.canvas}` #ffffff | Deep focus |
-| Upload / sharing | `{colors.canvas}` #ffffff | Form surfaces |
+- Don't introduce a third canvas color — stick to black or light/cream. Greys, beiges, and blues are not in the system.
+- Don't add drop shadows on cinematic dark cards beyond the subtle inset top-highlight; the cinematic track wants flat blackness.
+- Don't shrink display tiers below `{typography.display-md}` (48px) on hero surfaces; below that they read as section heads, not display.
+- Don't put aloe / pistachio greens behind type — they're surface fills, not text colors.
+- Don't replace the pill shape with a rounded-rectangle button anywhere.
 
 ## Responsive Behavior
 
 ### Breakpoints
+
 | Name | Width | Key Changes |
 |---|---|---|
-| Mobile | < 768px | Agent panes collapse. Single column. |
-| Tablet | 768–1024px | Left pane toggle. 1-col dataset grid. |
-| Desktop | > 1024px | Full 3-pane layout. 2-col dataset grid. |
+| Wide | ≥ 1440px | Full cinematic hero with edge-bleeding photography; pricing 4-up |
+| Desktop | 1024–1440px | Default content max-width; pricing 4-up tightens |
+| Tablet | 768–1023px | Pricing 2-up; cinematic hero photography crops |
+| Mobile | < 768px | Pricing 1-up; hamburger nav; display-xxl drops to ~56–64px |
+
+### Touch Targets
+- Pill buttons hit ≥ 44×44px on mobile via 12px vertical padding × 16px line-height. WCAG AAA compliant.
+- Form fields stay at the 44px minimum height across all breakpoints.
 
 ### Collapsing Strategy
-- Agent left pane (256px): collapses to hamburger toggle on tablet/mobile
-- Agent right pane (340px): hidden by default, slide-in on desktop
-- Dataset grid: 2-up → 1-up on mobile
-- Summary panels: 4-up → 2-up → 1-up
+- Display sizes scale down through the breakpoint stair: 96 → 70 → 55 → 48 → 36px on mobile.
+- Cinematic photography crops aggressively at smaller widths, prioritizing focal subject over edge-bleed.
+- Pricing tiers stair-step 4-up → 2-up → 1-up; the featured aloe tier stays visually distinguished at every step.
+- Top nav collapses to hamburger below 768px; menu inherits canvas polarity.
 
-## Known Gaps
-- Exact animation timing for pulse dot not specified; recommend 2s infinite ease
-- Dark mode not implemented in current surfaces
-- Responsive breakpoint behavior for genomic visualization panels not defined
-- Print/PDF export styling not documented
-- Accessibility contrast ratios for ink-tertiary (#8b8b86) on surface-warm (#faf8f5) should be verified
+### Image Behavior
+Photography uses responsive `srcset` with art-direction crops at major breakpoints. Mobile crops favor close subjects; wide crops favor environmental / storefront context.
+
+## Iteration Guide
+
+1. Focus on ONE component at a time.
+2. Reference component names and tokens directly (`{colors.aloe-10}`, `{button-primary-pill}-pressed`, `{rounded.pill}`).
+3. Run `npx @google/design.md lint DESIGN.md` after edits.
+4. Add new variants as separate entries.
+5. Default body to `{typography.body-md}`; reserve `{typography.body-lg}` for marketing leads.
+6. Keep the two canvas tracks separated — when designing a new page, choose cinematic OR transactional, not both.
+7. The pill shape is non-negotiable; new button variants vary in fill / border / canvas, never in shape.
